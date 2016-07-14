@@ -1,0 +1,9 @@
+colorama
+dj-database-url
+dj-static
+django-cors-headers
+django-sslserver
+gunicorn
+python-social-auth
+rollbar
+psycopg
