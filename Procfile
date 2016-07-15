@@ -1,1 +1,1 @@
-web: gunicorn tenderbelly.wsgi --log-file -
+web: gunicorn social_automation.wsgi --log-file -
