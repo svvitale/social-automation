@@ -1,0 +1,23 @@
+{
+  "name": "social-automation",
+  "homepage": "https://github.com/svvitale/social-automation",
+  "authors": [
+    "Scott Vitale <scott@spigotlabs.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "jquery.serializeJSON": "^2.7.2",
+    "rollbar": "^1.9.1"
+  }
+}
