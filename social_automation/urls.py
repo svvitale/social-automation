@@ -14,10 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf.urls.static import static
-from django.contrib import admin
+
+from social_automation.views import IndexView, DashboardView, LogoutView
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+
+    url('^twitter/?', include('twitter.urls')),
+    url('^facebook/?', include('facebook.urls')),
+    url('^linkedin/?', include('linkedin.urls')),
+
+    url(r'^auth/', include('social.apps.django_app.urls', namespace='social')),
+
+    url(r'^dashboard', DashboardView.as_view()),
+    url(r'^logout', LogoutView.as_view()),
+    url(r'^$', IndexView.as_view())
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -25,7 +25,6 @@ class ENVIRONMENTS(Enum):
     DEV = "development"
 
 ENV_NAME = os.environ.get('ENVIRONMENT', socket.gethostname())
-SSL_NOT_REQUIRED = ENV_NAME not in (ENVIRONMENTS.PROD.value, ENVIRONMENTS.DEV.value)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -38,17 +37,16 @@ DEBUG = ENV_NAME != 'production'
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'sslserver',
     'social_automation',
 	'twitter',
 	'facebook',
@@ -66,6 +64,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'social_automation.middleware.LoginRequiredMiddleware',
+    'social_automation.middleware.SSLMiddleware'
 ]
 
 SOCIAL_AUTH_PIPELINE = (
@@ -110,24 +110,24 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
 
     # Update the user record with any changed info from the auth service.
-    'social.pipeline.user.user_details',
-
-    # Add the user's avatar
-    'tenderbelly.auth_pipeline.add_avatar'
+    'social.pipeline.user.user_details'
 )
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.linkedin.LinkedinOAuth2'
 )
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/'
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/dashboard'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = not SSL_NOT_REQUIRED
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 SOCIAL_AUTH_TRAILING_SLASH = False
 
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
@@ -135,11 +135,6 @@ RAISE_EXCEPTIONS = False
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_AUTH_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('GOOGLE_AUTH_SECRET')
-SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['tenderbelly.com', 'spigotlabs.com']
-SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_EMAILS = ['svvitale@gmail.com', 'mikepeper@gmail.com']
-SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
-    'prompt': 'select_account'
-}
 
 if not SOCIAL_AUTH_GOOGLE_OAUTH2_KEY or not SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET:
     print("Google OAuth is DISABLED")

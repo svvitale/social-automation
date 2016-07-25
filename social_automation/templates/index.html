@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    <style>
+        .login-container {
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+
+        .logo-h1 {
+            height: 60px;
+            vertical-align: top;
+            margin-top: -23px;
+        }
+
+        .login-button, .login-button:visited {
+            display: inline-block;
+            padding: 10px;
+            text-decoration: none;
+            background-color: #580000;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .login-button:hover {
+            text-decoration: underline;
+        }
+
+        .login-button i.fa {
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="login-container">
+        <h1>Social Automation by <img class="logo-h1" src="/static/images/spigotlabs.png"></h1>
+
+        <div>
+            <a href="/auth/login/google-oauth2" class="login-button">
+                <i class="fa fa-google-plus"></i>Login with Google
+            </a>
+        </div>
+    </div>
+{% endblock %}

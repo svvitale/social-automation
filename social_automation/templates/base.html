@@ -1,0 +1,66 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Spigot Labs Social Automation {% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+    <link href="/static/js/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Carrois Gothic', sans-serif;
+        }
+    </style>
+
+    <script type="application/javascript" src="/static/js/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="/static/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+    <script type="application/javascript" src="/static/js/mustache.js/mustache.min.js"></script>
+
+    <script>
+        _rollbarConfig = {
+          accessToken: "81b28675bdd64664ab22d87383dcff31",
+          captureUncaught: true,
+          payload: {
+            environment: "production"
+          }
+        };
+    </script>
+    <script src="/static/js/rollbar/dist/rollbar.snippet.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                processData: false,
+                contentType: 'application/json; charset=UTF-8'
+            });
+        });
+    </script>
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+    {% endblock %}
+
+    <div style="height: 40px;"></div>
+
+    <div style="padding: 5px; position: fixed; bottom: 0; width: 100%; background-color: rgba(220, 220, 220, 0.8)">
+        <div style="float: right; margin-right: 10px;">
+            <a href="http://www.spigotlabs.com"><img style="height: 30px; vertical-align: top; opacity: 0.5" src="/static/images/spigotlabs.png" /></a>
+        </div>
+        <div id="actions" style="padding: 5px">
+            {% block actions %}
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+
+</html>

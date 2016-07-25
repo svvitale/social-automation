@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
+    <style>
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+
+    <div>
+        <div>Name: {{ user.first_name }} {{ user.last_name }}</div>
+        <div>Email: {{ user.email }}</div>
+        <div>Linked Social Accounts: {{ linked_providers }}</div>
+    </div>
+
+{% endblock %}

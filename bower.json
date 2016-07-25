@@ -18,6 +18,7 @@
   "dependencies": {
     "jquery": "*",
     "jquery.serializeJSON": "^2.7.2",
-    "rollbar": "^1.9.1"
+    "rollbar": "^1.9.1",
+    "font-awesome": "^4.6.3"
   }
 }

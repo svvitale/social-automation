@@ -6,4 +6,4 @@ django-sslserver
 gunicorn
 python-social-auth
 rollbar
-psycopg
+#psycopg
