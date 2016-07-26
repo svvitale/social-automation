@@ -231,7 +231,7 @@ STATIC_URL = '/static/'
 # noinspection PyUnresolvedReferences
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # MEP - not sure why the noinspection is needed...
 # noinspection PyUnresolvedReferences
-STATICFILES_DIRS = (('js', 'bower_components'), ('css', 'static/css'))
+STATICFILES_DIRS = (('js', 'bower_components'),)
 
 # Rollbar Configuration
 ROLLBAR_TOKEN = os.environ.get('ROLLBAR_ACCESS_TOKEN')
