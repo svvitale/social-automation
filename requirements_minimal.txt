@@ -8,4 +8,5 @@ python-social-auth
 rollbar
 libsass
 django-sass-processor
+django-compressor
 #psycopg

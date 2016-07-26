@@ -2,3 +2,9 @@
 
 # Run Django migrations.
 python manage.py migrate --noinput
+
+# Pre-compile sass
+python manage.py compilescss
+
+# Collect static assets
+python manage.py collectstatic --ignore=.scss --noinput
