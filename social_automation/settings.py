@@ -24,6 +24,7 @@ class ENVIRONMENTS(Enum):
     STAGE = "staging"
     DEV = "development"
 
+
 ENV_NAME = os.environ.get('ENVIRONMENT', socket.gethostname())
 
 # Quick-start development settings - unsuitable for production
@@ -46,11 +47,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'sass_processor',
     'sslserver',
     'social_automation',
-	'twitter',
-	'facebook',
-	'linkedin'
+    'twitter',
+    'facebook',
+    'linkedin'
+]
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'social_automation', 'styles')
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -150,9 +156,9 @@ else:
 
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_AUTH_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_AUTH_SECRET')
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']#, 'manage_pages', 'publish_pages']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']  # , 'manage_pages', 'publish_pages']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, email'
+    'fields': 'id, name, email'
 }
 
 if not SOCIAL_AUTH_FACEBOOK_KEY or not SOCIAL_AUTH_FACEBOOK_SECRET:
@@ -180,11 +186,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_automation.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 import dj_database_url  # nopep8
+
 DATABASES = {'default': dj_database_url.config(default='postgres://postgres@localhost:5432/social_automation')}
 
 # Password validation
@@ -205,7 +211,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -219,15 +224,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
 # noinspection PyUnresolvedReferences
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')   # MEP - not sure why the noinspection is needed...
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # MEP - not sure why the noinspection is needed...
 # noinspection PyUnresolvedReferences
-STATICFILES_DIRS = (('js', 'bower_components'),)
+STATICFILES_DIRS = (('js', 'bower_components'), ('css', 'static/css'))
 
 # Rollbar Configuration
 ROLLBAR_TOKEN = os.environ.get('ROLLBAR_ACCESS_TOKEN')
@@ -244,6 +248,5 @@ if ROLLBAR_TOKEN:
 else:
     ROLLBAR = {}
     print("Rollbar NOT configured.")
-
 
 APPEND_SLASHES = False

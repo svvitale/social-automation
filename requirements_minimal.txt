@@ -6,4 +6,6 @@ django-sslserver
 gunicorn
 python-social-auth
 rollbar
+libsass
+django-sass-processor
 #psycopg

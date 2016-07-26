@@ -9,17 +9,11 @@
     <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href="/static/js/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: 'Carrois Gothic', sans-serif;
-        }
-    </style>
+    {% load sass_tags %}
+    <link href="{% sass_src 'css/app.scss' %}" rel="stylesheet" type="text/css" />
 
     <script type="application/javascript" src="/static/js/jquery/dist/jquery.min.js"></script>
     <script type="application/javascript" src="/static/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
-    <script type="application/javascript" src="/static/js/mustache.js/mustache.min.js"></script>
 
     <script>
         _rollbarConfig = {
