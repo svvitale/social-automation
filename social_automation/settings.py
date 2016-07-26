@@ -91,13 +91,12 @@ SOCIAL_AUTH_PIPELINE = (
     # there's any collision.
     'social.pipeline.user.get_username',
 
-    # Send a validation email to the user to verify its email address.
-    # Disabled by default.
-    # 'social.pipeline.mail.mail_validation',
+    # Requests the user's email address if they're logging in via twitter
+    'social_automation.auth_pipeline.get_email_for_twitter_acct',
 
     # Associates the current social details with another user account with
     # a similar email address. Disabled by default.
-    # 'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.social_auth.associate_by_email',
 
     # Create a user account if we haven't found one yet.
     'social.pipeline.user.create_user',
@@ -141,6 +140,26 @@ if not SOCIAL_AUTH_GOOGLE_OAUTH2_KEY or not SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET:
 else:
     print("Google OAuth is ENABLED")
 
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_AUTH_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_AUTH_SECRET')
+
+if not SOCIAL_AUTH_TWITTER_KEY or not SOCIAL_AUTH_TWITTER_SECRET:
+    print("Twitter OAuth is DISABLED")
+else:
+    print("Twitter OAuth is ENABLED")
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_AUTH_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_AUTH_SECRET')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']#, 'manage_pages', 'publish_pages']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email'
+}
+
+if not SOCIAL_AUTH_FACEBOOK_KEY or not SOCIAL_AUTH_FACEBOOK_SECRET:
+    print("Facebook OAuth is DISABLED")
+else:
+    print("Facebook OAuth is ENABLED")
+
 ROOT_URLCONF = 'social_automation.urls'
 
 TEMPLATES = [
@@ -166,7 +185,7 @@ WSGI_APPLICATION = 'social_automation.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 import dj_database_url  # nopep8
-DATABASES = {'default': dj_database_url.config(default='postgres://qitmwmfmutlwqd:Mxbrk9YRZXpnD8cPPuti4zVE-4@ec2-54-204-30-115.compute-1.amazonaws.com:5432/d2745uvcegvacs')}
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres@localhost:5432/social_automation')}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

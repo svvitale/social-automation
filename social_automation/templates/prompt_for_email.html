@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Twitter Email Verification{% endblock %}
 
 {% block head %}
     <style>
@@ -35,10 +35,6 @@
             background-color: #00ACEE;
         }
 
-        .login-button.facebook {
-            background-color: #3B5998;
-        }
-
         .login-button:hover {
             text-decoration: underline;
         }
@@ -51,24 +47,13 @@
 
 {% block body %}
     <div class="login-container">
-        <h1>Social Automation by <img class="logo-h1" src="/static/images/spigotlabs.png"></h1>
+        <h1>Welcome, {{ name }}!  To associate your twitter account with your other social profiles, please enter your email address.</h1>
 
-        <div class="button-container">
-            <a href="/auth/login/google-oauth2" class="login-button google">
-                <i class="fa fa-google-plus"></i>Login with Google
-            </a>
-        </div>
-        <div class="button-container">
-            <a href="/auth/login/twitter" class="login-button twitter">
-                <i class="fa fa-twitter"></i>Login with Twitter
-            </a>
-        </div>
-        <div class="button-container">
-            <a href="/auth/login/facebook" class="login-button facebook">
-                <i class="fa fa-facebook"></i>Login with Facebook
-            </a>
-        </div>
-
-
+        <form method="post" role="form">
+            {% csrf_token %}
+            <label>Email</label>
+            <input type="text" name="email">
+            <button type="submit">Submit</button>
+        </form>
     </div>
 {% endblock %}
