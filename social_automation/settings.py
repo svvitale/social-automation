@@ -119,7 +119,6 @@ SOCIAL_AUTH_PIPELINE = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.Facebook2OAuth2',
     'social.backends.linkedin.LinkedinOAuth2'
@@ -137,14 +136,6 @@ SOCIAL_AUTH_TRAILING_SLASH = False
 
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
 RAISE_EXCEPTIONS = False
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_AUTH_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('GOOGLE_AUTH_SECRET')
-
-if not SOCIAL_AUTH_GOOGLE_OAUTH2_KEY or not SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET:
-    print("Google OAuth is DISABLED")
-else:
-    print("Google OAuth is ENABLED")
 
 SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_AUTH_KEY')
 SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_AUTH_SECRET')
@@ -165,6 +156,16 @@ if not SOCIAL_AUTH_FACEBOOK_KEY or not SOCIAL_AUTH_FACEBOOK_SECRET:
     print("Facebook OAuth is DISABLED")
 else:
     print("Facebook OAuth is ENABLED")
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('LINKEDIN_AUTH_KEY')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('LINKEDIN_AUTH_SECRET')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress', 'w_share']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'picture-url', 'public-profile-url']
+
+if not SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY or not SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET:
+    print("Linkedin OAuth is DISABLED")
+else:
+    print("Linkedin OAuth is ENABLED")
 
 ROOT_URLCONF = 'social_automation.urls'
 
