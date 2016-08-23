@@ -3,12 +3,17 @@ $twitter-color: #00ACEE;
 $facebook-color: #3B5998;
 $linkedin-color: #0077B5;
 $text-color: #777;
+$link-color: #0000ff;
 
 body {
   padding: 0;
   margin: 0;
   font-family: 'Carrois Gothic', sans-serif;
   color: $text-color;
+}
+
+a:active, a:visited {
+  color: $link-color;
 }
 
 h1 {
