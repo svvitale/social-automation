@@ -1,0 +1,36 @@
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
+<div class="nav-bar">
+    {% if 'twitter' in linked_providers %}
+        <a href="/twitter" class="twitter">
+            <i class="fa fa-twitter"></i>Twitter
+        </a>
+    {% else %}
+        <a href="/auth/login/twitter" title="Link a Twitter account">
+            <i class="fa fa-twitter"></i>Twitter
+        </a>
+    {% endif %}
+
+    {% if 'facebook' in linked_providers %}
+        <a href="/facebook" class="facebook">
+            <i class="fa fa-facebook"></i>Facebook
+        </a>
+    {% else %}
+        <a href="/auth/login/facebook" title="Link a Facebook account">
+            <i class="fa fa-facebook"></i>Facebook
+        </a>
+    {% endif %}
+
+    {% if 'linkedin-oauth2' in linked_providers %}
+        <a href="/linkedin" class="linkedin">
+            <i class="fa fa-linkedin"></i>LinkedIn
+        </a>
+    {% else %}
+        <a href="/auth/login/linkedin-oauth2" title="Link a LinkedIn account">
+            <i class="fa fa-linkedin"></i>Linkedin
+        </a>
+    {% endif %}
+</div>

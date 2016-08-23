@@ -2,19 +2,24 @@
 
 {% block title %}Dashboard{% endblock %}
 
-{% block head %}
-    <style>
-    </style>
-{% endblock %}
-
 {% block body %}
-    <h1>Dashboard</h1>
-
-    <div>
-        <div>Name: {{ user.first_name }} {{ user.last_name }}</div>
-        <div>Email: {{ user.email }}</div>
-        <div>Linked Social Accounts: {{ linked_providers }}</div>
+    <div class="header-container">
+        <h1 class="page-header">Social Automation Dashboard</h1>
+        {% include "avatar.html" %}
     </div>
 
-    <a href="/logout">Logout</a>
+    <div class="page-container">
+
+        {% include "nav-bar.html" %}
+
+        <div>
+            <h2>Welcome!</h2>
+
+            <div>
+                One day there will be a meaningful dashboard here including commonly used tasks and a history of execution.  That day is not today.<br><br>
+                Click a social network on the left to get started.
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

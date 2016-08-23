@@ -2,56 +2,9 @@
 
 {% block title %}Login{% endblock %}
 
-{% block head %}
-    <style>
-        .login-container {
-            margin-top: 40px;
-            padding: 0 20px;
-        }
-
-        .logo-h1 {
-            height: 60px;
-            vertical-align: top;
-            margin-top: -23px;
-        }
-
-        .button-container {
-            margin-bottom: 30px;
-        }
-
-        .login-button, .login-button:visited {
-            display: inline-block;
-            padding: 10px;
-            text-decoration: none;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .login-button.google {
-            background-color: #580000;
-        }
-
-        .login-button.twitter {
-            background-color: #00ACEE;
-        }
-
-        .login-button.facebook {
-            background-color: #3B5998;
-        }
-
-        .login-button:hover {
-            text-decoration: underline;
-        }
-
-        .login-button i.fa {
-            margin-right: 10px;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
     <div class="login-container">
-        <h1>Social Automation by <img class="logo-h1" src="/static/images/spigotlabs.png"></h1>
+        <h1 class="login-header">Social Automation by <img class="logo-h1" src="/static/images/spigotlabs.png"></h1>
 
         <div class="button-container">
             <a href="/auth/login/twitter" class="login-button twitter">

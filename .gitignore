@@ -3,3 +3,4 @@
 *.orig
 bower_components/
 /static/
+social_automation/static/css/*.css

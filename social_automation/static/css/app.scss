@@ -1,5 +1,104 @@
+$google-color: #580000;
+$twitter-color: #00ACEE;
+$facebook-color: #3B5998;
+$linkedin-color: #0077B5;
+$text-color: #777;
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Carrois Gothic', sans-serif;
+  color: $text-color;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+i.fa {
+  margin-right: 10px;
+}
+
+.header-container {
+  display: flex;
+
+  .page-header {
+    flex: 1;
+    padding: 40px;
+  }
+
+  .avatar-container {
+    padding: 40px 20px;
+  }
+}
+
+.page-container {
+  display: flex;
+}
+
+.nav-bar {
+  padding: 0 40px;
+  font-size: 2em;
+
+  a {
+    display: block;
+    padding: 20px 0;
+    text-decoration: none;
+    color: $text-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.twitter {
+      color: $twitter-color;
+    }
+
+    &.facebook {
+      color: $facebook-color;
+    }
+
+    &.linkedin {
+      color: $linkedin-color;
+    }
+  }
+}
+
+.login-container {
+  margin-top: 40px;
+  padding: 0 20px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.logo-h1 {
+  height: 60px;
+  vertical-align: top;
+  margin-top: -23px;
+}
+
+.button-container {
+  margin-bottom: 30px;
+  .login-button, .login-button:visited {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    &.google {
+      background-color: $google-color;
+    }
+    &.twitter {
+      background-color: $twitter-color;
+    }
+    &.facebook {
+      background-color: $facebook-color;
+    }
+    &.linkedin {
+      background-color: $linkedin-color;
+    }
+  }
 }
