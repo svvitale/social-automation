@@ -1,0 +1,38 @@
+{% extends "dashboard.html" %}
+
+{% block title %}Twitter Automation{% endblock %}
+
+{% block page-header %}Twitter Automation{% endblock %}
+
+{% block page-content %}
+    <h2>Follow all Twitter users found on a web page</h2>
+    <form class="follow-from-url">
+        <div class="form-element">
+            <label for="url">URL:</label>
+            <input type="url" name="url" id="url" size="100">
+        </div>
+        <div class="form-element">
+            <input type="submit" value="Find &amp; Follow">
+        </div>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $('form.follow-from-url').submit(function (evt) {
+                evt.preventDefault();
+
+                var formData = $(this).serializeJSON();
+
+                $.ajax('/api/twitter/follow-from-url', {
+                    type: "POST",
+                    data: JSON.stringify(formData)
+                }).done(function (xhr) {
+                    debugger;
+                }).fail(function (ex) {
+                    debugger;
+                    //alert("Error following users " + ex);
+                });
+            });
+        })
+    </script>
+{% endblock %}

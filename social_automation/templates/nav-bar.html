@@ -5,7 +5,7 @@
 </script>
 <div class="nav-bar">
     {% if 'twitter' in linked_providers %}
-        <a href="/twitter" class="twitter">
+        <a href="/twitter" class="twitter {% if current_page == 'twitter' %}selected{% endif %}">
             <i class="fa fa-twitter"></i>Twitter
         </a>
     {% else %}
@@ -15,7 +15,7 @@
     {% endif %}
 
     {% if 'facebook' in linked_providers %}
-        <a href="/facebook" class="facebook">
+        <a href="/facebook" class="facebook {% if current_page == 'facebook' %}selected{% endif %}">
             <i class="fa fa-facebook"></i>Facebook
         </a>
     {% else %}
@@ -25,7 +25,7 @@
     {% endif %}
 
     {% if 'linkedin-oauth2' in linked_providers %}
-        <a href="/linkedin" class="linkedin">
+        <a href="/linkedin" class="linkedin {% if current_page == 'linkedin' %}selected{% endif %}">
             <i class="fa fa-linkedin"></i>LinkedIn
         </a>
     {% else %}

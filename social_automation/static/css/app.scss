@@ -43,12 +43,11 @@ i.fa {
 }
 
 .nav-bar {
-  padding: 0 40px;
   font-size: 2em;
 
   a {
     display: block;
-    padding: 20px 0;
+    padding: 20px 40px;
     text-decoration: none;
     color: $text-color;
 
@@ -56,18 +55,37 @@ i.fa {
       text-decoration: underline;
     }
 
-    &.twitter {
+    &.twitter.selected {
+      background-color: $twitter-color;
+      color: white;
+    }
+
+    &.twitter:not(.selected) {
       color: $twitter-color;
     }
 
-    &.facebook {
+    &.facebook.selected {
+      background-color: $facebook-color;
+      color: white;
+    }
+
+    &.facebook:not(.selected) {
       color: $facebook-color;
     }
 
-    &.linkedin {
+    &.linkedin.selected {
+      background-color: $linkedin-color;
+      color: white;
+    }
+
+    &.linkedin:not(.selected) {
       color: $linkedin-color;
     }
   }
+}
+
+.page-content {
+  padding-left: 40px;
 }
 
 .login-container {
@@ -106,4 +124,8 @@ i.fa {
       background-color: $linkedin-color;
     }
   }
+}
+
+.form-element {
+  margin-top: 20px;
 }

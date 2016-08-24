@@ -17,18 +17,21 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 
-from social_automation.views import IndexView, DashboardView, LogoutView
+from social_automation.views import IndexView, DashboardView, LogoutView, TwitterView, FacebookView, LinkedInView
 
 urlpatterns = [
 
-    url('^twitter/?', include('twitter.urls')),
-    url('^facebook/?', include('facebook.urls')),
-    url('^linkedin/?', include('linkedin.urls')),
+    url('^api/twitter/?', include('twitter.urls')),
+    url('^api/facebook/?', include('facebook.urls')),
+    url('^api/linkedin/?', include('linkedin.urls')),
 
     url(r'^auth/', include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^dashboard', DashboardView.as_view()),
     url(r'^logout', LogoutView.as_view()),
+    url(r'^twitter', TwitterView.as_view()),
+    url(r'^facebook', FacebookView.as_view()),
+    url(r'^linkedin', LinkedInView.as_view()),
     url(r'^$', IndexView.as_view())
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

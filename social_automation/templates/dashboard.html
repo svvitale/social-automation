@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="header-container">
-        <h1 class="page-header">Social Automation Dashboard</h1>
+        <h1 class="page-header">{% block page-header %}Social Automation Dashboard{% endblock %}</h1>
         {% include "avatar.html" %}
     </div>
 
@@ -12,13 +12,16 @@
 
         {% include "nav-bar.html" %}
 
-        <div>
-            <h2>Welcome!</h2>
+        <div class="page-content">
+            {% block page-content %}
+                <h2>Welcome!</h2>
 
-            <div>
-                One day there will be a meaningful dashboard here including commonly used tasks and a history of execution.  That day is not today.<br><br>
-                Click a social network on the left to get started.
-            </div>
+                <div>
+                    One day there will be a meaningful dashboard here including commonly used tasks and a history of
+                    execution. That day is not today.<br><br>
+                    Click a social network on the left to get started.
+                </div>
+            {% endblock %}
         </div>
     </div>
 

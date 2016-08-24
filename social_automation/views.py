@@ -19,8 +19,45 @@ class IndexView(View):
 
 
 class DashboardView(View):
-    def get(self, request):
-        return render_to_response('dashboard.html', {
+    @staticmethod
+    def standard_response_data(request):
+        return {
             'user': request.user,
             'linked_providers': {link.provider for link in request.user.social_auth.all()},
+        }
+
+    def get(self, request):
+        return render_to_response('dashboard.html', DashboardView.standard_response_data(request))
+
+
+class TwitterView(View):
+    def get(self, request):
+
+        response_data = DashboardView.standard_response_data(request)
+        response_data.update({
+            'current_page': 'twitter'
         })
+
+        return render_to_response('twitter.html', response_data)
+
+
+class FacebookView(View):
+    def get(self, request):
+
+        response_data = DashboardView.standard_response_data(request)
+        response_data.update({
+            'current_page': 'facebook'
+        })
+
+        return render_to_response('facebook.html', response_data)
+
+
+class LinkedInView(View):
+    def get(self, request):
+
+        response_data = DashboardView.standard_response_data(request)
+        response_data.update({
+            'current_page': 'linkedin'
+        })
+
+        return render_to_response('linkedin.html', response_data)

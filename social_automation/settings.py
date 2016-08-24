@@ -140,6 +140,7 @@ RAISE_EXCEPTIONS = False
 
 SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_AUTH_KEY')
 SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_AUTH_SECRET')
+SOCIAL_AUTH_TWITTER_LOGIN_REDIRECT_URL = '/twitter'
 
 if not SOCIAL_AUTH_TWITTER_KEY or not SOCIAL_AUTH_TWITTER_SECRET:
     print("Twitter OAuth is DISABLED")
@@ -152,6 +153,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_friends']  # , 'm
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, name, email'
 }
+SOCIAL_AUTH_FACEBOOK_LOGIN_REDIRECT_URL = '/facebook'
 
 if not SOCIAL_AUTH_FACEBOOK_KEY or not SOCIAL_AUTH_FACEBOOK_SECRET:
     print("Facebook OAuth is DISABLED")
@@ -162,6 +164,7 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('LINKEDIN_AUTH_KEY')
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('LINKEDIN_AUTH_SECRET')
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress', 'w_share']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'picture-url', 'public-profile-url']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_LOGIN_REDIRECT_URL = '/linkedin'
 
 if not SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY or not SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET:
     print("Linkedin OAuth is DISABLED")
