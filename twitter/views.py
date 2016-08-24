@@ -36,7 +36,7 @@ class FollowFromUrlView(View):
                 url='https://api.twitter.com/1.1/friendships/create.json',
                 params={
                     'screen_name': screen_name,
-                    'follow': 'true'
+                    'follow': 'false'  # do NOT enable notifications
                 }
             )
 
