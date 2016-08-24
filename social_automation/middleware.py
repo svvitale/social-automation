@@ -3,10 +3,9 @@ from django.http import HttpResponseRedirect
 import re
 
 
-class DisableCSRFOnDebug:
+class DisableCSRF:
     def process_request(self, request):
-        if settings.DEBUG:
-            setattr(request, '_dont_enforce_csrf_checks', True)
+        setattr(request, '_dont_enforce_csrf_checks', True)
 
 
 class LoginRequiredMiddleware:

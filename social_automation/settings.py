@@ -36,7 +36,7 @@ SECRET_KEY = ')h^l%09^40w6x9yt%2==+y-r!&vyo1-=41@mrqhi_9-or(02v3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENV_NAME != 'production'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'social_automation.middleware.DisableCSRF',
     'social_automation.middleware.LoginRequiredMiddleware',
     'social_automation.middleware.SSLMiddleware'
 ]
